@@ -1,0 +1,33 @@
+n tier---
+	App layer
+	Business logic layer
+	Data accesss layer
+
+
+for App layer-- any project
+
+for Business logic layer and data access layer- class library dot net mvc
+
+add references-  AppLayer - bll - dal
+
+
+DAL --->>> 
+	install entity in dal
+	-> create Models in Dal
+		-> schema of db
+	-> context class, inherit db context 
+
+	-> connection string global, so in AppLayer -> web config
+		->    <connectionStrings>
+   				 <add name="EmpContext" connectionString="data source=.; initial catalog=EftierApp; integrated security=true;" providerName="System.Data.SqlClient"/>
+  			</connectionStrings> 
+			//initial catalog=EftierApp  === DB name
+
+	-> migration
+		-> enable-migrations
+		-> add-migration InitDb
+		-> update-database
+
+	-> Repos -- to handle crud in db
+
+BLL -> create folder Services, there will be services for every entity

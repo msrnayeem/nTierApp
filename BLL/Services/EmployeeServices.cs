@@ -1,4 +1,5 @@
-﻿using DAL.Models;
+﻿using DAL;
+using DAL.Models;
 using DAL.Repos;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,13 @@ namespace BLL.Services
 {
     public class EmployeeServices
     {
+       
+
        public static object GetAll()
         {
             return EmployeeRepo.GetAll();
         }
-        public static Employee Get(int id)
+        public static object Get(int id)
         {
             return EmployeeRepo.Get(id);
         }

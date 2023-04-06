@@ -24,5 +24,44 @@ namespace ApiAppLayer.Controllers
             }
             
         }
+
+        [HttpGet]
+        [Route("api/employee/getEmployeeById/{id}")]
+        public HttpResponseMessage GetEmployeeById(int id)
+        {
+            try
+            {
+                var data = EmployeeServices.Get(id);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+
+        [HttpPost]
+        [Route("api/employee/addEmployee")]
+        public HttpResponseMessage AddEmployee(EmployeeServices employee)
+        {
+            try
+            {
+                bool result = EmployeeServices.Create(employee);
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "inserted");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotModified, "failed");
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }

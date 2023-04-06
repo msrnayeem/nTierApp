@@ -25,7 +25,15 @@ namespace DAL.Repos
         public static bool Create(Employee e)
         {
             db.Employees.Add(e);
-            return db.SaveChanges() > 0;
+            var res = db.SaveChanges() > 0;
+            if (res)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public static bool Update(Employee e)
         {
