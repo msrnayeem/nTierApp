@@ -45,23 +45,24 @@ namespace ApiAppLayer.Controllers
         [Route("api/employee/addEmployee")]
         public HttpResponseMessage AddEmployee(EmployeeServices employee)
         {
-            try
-            {
-                bool result = EmployeeServices.Create(employee);
-                if (result)
-                {
-                    return Request.CreateResponse(HttpStatusCode.OK, "inserted");
-                }
-                else
-                {
-                    return Request.CreateResponse(HttpStatusCode.NotModified, "failed");
-                }
-               
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
-            }
+            //try
+            //{
+            //    bool result = EmployeeServices.Create(employee);
+            //    if (result)
+            //    {
+            //        return Request.CreateResponse(HttpStatusCode.OK, "inserted");
+            //    }
+            //    else
+            //    {
+            //        return Request.CreateResponse(HttpStatusCode.NotModified, "failed");
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            //}
+            return Request.CreateResponse(HttpStatusCode.OK, employee);
         }
     }
 }
